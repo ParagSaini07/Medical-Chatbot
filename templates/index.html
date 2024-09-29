@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURE CONNECT</title>
+    <link rel="stylesheet" href="/templates/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+</head>
+<style>/* Reset styles */
+    * {
+      overflow-y: hidden;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: #fff;
+      padding: 1rem 5%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+    
+    header.scrolled {
+      background-color: #00bcd4;
+    }
+    
+    /* Navigation styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      width: 3.5em;
+      height: 5em;
+      /* margin-right: 10px; */
+    }
+    
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00bcd4;
+      transition: color 0.3s ease;
+    }
+    
+    
+    header.scrolled .logo span {
+      color: #fff;
+    }
+    
+    
+    .search-bar:focus, .mic-search-bar:focus {
+      border-color: #00bcd4;
+      outline: none;
+      box-shadow: none;
+    }
+    
+    /* Adjusting the search icon position */
+    /* .search-icon {
+      position: absolute;
+      top: 50%;
+      right: 0.5rem;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    } */
+    
+    /* .search-icons svg {
+      width: 20px;
+      height: 20px;
+      color: #333;
+      transition: color 0.3s ease;
+    } */
+    
+    header.scrolled .search-icon svg {
+      color: #fff;
+    }
+    
+    
+    
+    nav ul {
+      display: flex;
+      list-style-type: none;
+    }
+    
+    nav ul li {
+      margin-left: 2rem;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    
+    header.scrolled nav ul li a {
+      color: #fff;
+    }
+    
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+    
+    header.scrolled nav ul li a:hover {
+      color: #f0f0f0;
+    }
+    
+    /* Hero section styles */
+    .hero {
+      display: flex;
+      color: #fff;
+      padding: 5rem 10%;
+
+      position: relative;
+      height: 100vh;
+      align-items: center;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      margin-bottom: 2rem;
+    }
+    
+    #askchat{
+      background-color: #fff;
+      width: auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+    }
+    
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    
+    .learn-more {
+      background-color: #fff;
+      color: #00bcd4;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    
+    .learn-more:hover {
+      background-color: #f0f0f0;
+    }
+    
+    
+
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto; 
+      padding: 30px; 
+      border: 1px solid #888;
+      width: 500px; 
+      max-width: 90%;
+      border-radius: 8px;
+    }
+    
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close-button:hover, .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .search-containers input{
+      padding: 5px;
+     
+    }
+    
+    
+    .modal h1{
+      color: #00bcd4;
+    }
+    .search-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .mic-container {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+    
+    .modal-search-bar, .mic-search-bar {
+      padding: 0.75rem 2.5rem; /* Add padding-right to make space for icons */
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+    #condition{
+        width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    }
+    .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #333;
+    }
+    
+    .mic-icon {
+  
+      right: 10px;
+      top: 50%;
+    
+      font-size: 18px;
+      color: #00bcd4;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: #fff;
+      padding: 0.2rem 1%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    header.scrolled {
+      background-color: #00bcd4;
+    }
+    
+    /* Navigation styles */
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: left;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00bcd4;
+      transition: color 0.3s ease;
+    }
+    
+    header.scrolled .logo span {
+      color: #fff;
+    }
+    
+    .learn-more {
+      background-color: #fff;
+      color: #00bcd4;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    
+    .learn-more:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Hero section styles */
+    .hero {
+      display: flex;
+      color: #fff;
+      padding: 5rem 10%;
+      background-image: url('/WhatsApp\ Image\ 2024-09-25\ at\ 22.12.37_1def2063.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 100vh;
+      align-items: center;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .background-image{
+        position: absolute;
+        width: 100%;
+        padding-top: 20px;
+        height: 100%;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto; 
+      padding: 30px; 
+      border: 1px solid #888;
+      width: 500px; 
+      max-width: 90%;
+      border-radius: 8px;
+    }
+    
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close-button:hover, .close-button:focus {
+      color: black;
+      cursor: pointer;
+    }
+    
+    .search-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .modal-search-bar, .mic-search-bar {
+      padding: 0.75rem 2.5rem; /* Add padding-right to make space for icons */
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+    
+  
+    .link_btn {
+            width: auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+    </style>
+<body>
+    <img class="background-image" src="/static/images/bc.jpg">
+    <header>
+      <div class="logo">
+          <img src="/static/images/logo1.jpg" alt="Medic Logo">
+            <h2 style="color: rgb(47, 134, 134);">CURE CONNECT</h2>
+      </div>
+        <nav>
+            <!-- <div class="nav-right">
+                <div class="search-containers">
+                    <input type="text" placeholder="Search..." class="search-bar">
+                    <button class="search-icons"></button>
+                </div> --->
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/service">Service</a></li>
+                    <li><a href="/doctor">Doctor</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Complete Healthcare Solution</h1>
+                <p>Healthcare refers to the organized delivery of medical services aimed at preventing, diagnosing, and
+                    treating illnesses, as well as promoting overall well-being. It includes primary care for routine
+                    check-ups and common ailments, specialized care for more complex medical conditions, emergency
+                    services, mental health support, and rehabilitation. Preventive care, such as vaccinations and
+                    health screenings, plays a crucial role in disease prevention. Healthcare systems vary across
+                    countries, with differing levels of access and affordability, and are constantly evolving due to
+                    advances in medical technology and research to improve patient outcomes.</p>
+                <div class="hero-actions">
+                    <button class="learn-more">Chatbot</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="chatbot-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Medical Chatbot</h1>
+            <div class="search-container">
+                
+                <input type="text" id="condition" placeholder="Ask something..." class="condition">
+                <div class="mic-container">
+                         <button id="askchat" onclick="sendMessage()">Ask Chatbot</button>
+
+                    <button class="mic-icon" onclick="startListening()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div> 
+            </div>
+            <div class="responseDiv">
+            <div id="response" class="response" style="display: none;"></div>
+            <div class="caution" id="caution">
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                e.preventDefault();  // Prevent only for internal links
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add a class to the header when scrolling
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Chatbot modal functionality
+    const chatbotButton = document.querySelector('.learn-more');
+    const modal = document.getElementById('chatbot-modal');
+    const closeButton = document.querySelector('.close-button');
+
+    chatbotButton.addEventListener('click', function () {
+        modal.style.display = 'block';  // Show the modal
+    });
+
+    closeButton.addEventListener('click', function () {
+        modal.style.display = 'none';  // Hide the modal
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';  // Hide the modal if clicking outside
+        }
+    });
+});
+
+// Function to redirect to the medication purchase link
+function redirect(link) {
+    window.open(link, '_blank');
+}
+
+// Function to handle sending the message to the backend and displaying the response
+function sendMessage() {
+    const condition = document.getElementById('condition').value;
+
+    if (condition === '') {
+        alert('Please enter your medical condition(s).');
+        return;
+    }
+
+    fetch('/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `condition=${encodeURIComponent(condition)}`
+    })
+    .then(response => response.json())
+    .then(async (data) => { // Mark as async to use translation API
+        const responseDiv = document.getElementById('response');
+        responseDiv.style.display = 'block';
+      
+        if (data.error) {
+            responseDiv.innerHTML = `<p>${data.error}</p>`;
+        } else {
+            // Display medications
+            let medsHtml = '<hr><hr><h3>Medications:</h3><ul>';
+            let medsText = 'Welcome to Cure Connect , Medications include: '; // Plain text for speech synthesis
+            for (const [med, value] of Object.entries(data.medications)) {
+                if (!med.includes('_link')) {
+                    const dose = value;
+                    const link = data.medications[`${med}_link`] || '#';
+                    medsHtml += `
+                        <li>
+                            ${med}: ${dose}
+                            <button class="link_btn" onclick="redirect('${link}')">Buy ${med}</button>
+                        </li>`;
+                    medsText += `${med}, ${dose}. `; // Add to the text to speak
+                }
+            }
+            medsHtml += '</ul>';
+
+            // Display precautions
+            let precautionsHtml = '<h3>Precautions:</h3><ul>';
+            let precautionsText = 'Precautions include: '; // Plain text for speech synthesis
+            data.precautions.forEach(precaution => {
+                precautionsHtml += `<li>${precaution}</li>`;
+                precautionsText += `${precaution}. `;
+            });
+            precautionsHtml += '</ul>';
+
+            // Display diet recommendations
+            let dietHtml = '<h3>Diet Recommendations:</h3><ul>';
+            let dietText = 'Diet recommendations include: '; // Plain text for speech synthesis
+            data.diet.forEach(dietItem => {
+                dietHtml += `<li>${dietItem}</li>`;
+                dietText += `${dietItem}. `;
+            });
+            dietHtml += '</ul>';
+
+            // Display preventative medications
+            let preventHtml = '<h3>Preventative Medications:</h3><ul>';
+            let preventText = 'Preventative medications include: '; // Plain text for speech synthesis
+            for (const [med, suggestion] of Object.entries(data.prevent_reactions)) {
+                preventHtml += `<li>${med}: ${suggestion}</li>`;
+                preventText += `${med}, ${suggestion}. `;
+            }
+            preventHtml += '</ul>';
+
+            // Display IMPORTANT recommendations
+            let impHtml = '<h3 style="color: red;">IMPORTANT:</h3><ul>';
+            let impText = 'Important notes: '; // Plain text for speech synthesis
+            data.if_not_working.forEach(impItem => {
+                impHtml += `<li>${impItem}</li>`;
+                impText += `${impItem}. `;
+            });
+            impHtml += '</ul>';
+
+            let cautionHtml = '<hr><hr><h3>Caution:</h3><ul>';
+            let cautionText = 'Welcome to Cure Connect , Medications include: '; // Plain text for speech synthesis
+
+                    cautionHtml += `
+                        <p>While our medical chatbot is designed to provide general health information and support, it is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with any questions you may have regarding a medical condition or treatment. If you are experiencing a medical emergency, please call emergency services immediately.</p>`;
+                    medsText += `${med}, ${dose}. `; // Add to the text to speak
+                }
+            
+            ;
+            responseDiv.innerHTML = medsHtml + precautionsHtml + dietHtml + preventHtml + impHtml + cautionHtml;
+
+            // Combine all sections into a single text string for speech
+            let speechText = `${medsText} ${precautionsText} ${dietText} ${impText}`;
+
+            // Call the translation function before using speech synthesis
+            const translatedText1 = await translateToHindi(`${medsText}`);
+            const translatedText2 = await translateToHindi(`${precautionsText}`);
+            const translatedText3 = await translateToHindi(`${dietText}`);
+           // const translatedText4 = await translateToHindi(`${preventText}`);
+            const translatedText5 = await translateToHindi(`${impText}`);
+            // Check if the browser supports speech synthesis
+            if ('speechSynthesis' in window) {
+                // Use Web Speech API to speak the dynamically generated text in Hindi
+                const synth = window.speechSynthesis;
+                const utterThis1 = new SpeechSynthesisUtterance(translatedText1);
+                const utterThis2 = new SpeechSynthesisUtterance(translatedText2);
+                const utterThis3 = new SpeechSynthesisUtterance(translatedText3);
+               // const utterThis4 = new SpeechSynthesisUtterance(translatedText4);
+                const utterThis5 = new SpeechSynthesisUtterance(translatedText5);
+                utterThis1.lang = 'hi-IN'; // Set language to Hindi
+                utterThis2.lang = 'hi-IN';
+                utterThis3.lang = 'hi-IN';
+                //utterThis4.lang = 'hi-IN';
+                utterThis5.lang = 'hi-IN';
+
+                // Optional: Set the voice to a specific one, if available
+                const voices = synth.getVoices();
+                const selectedVoice = voices.find(voice => voice.lang === 'en-US');
+                if (selectedVoice) {
+                    utterThis.voice = selectedVoice;
+                }
+
+                // Speak the translated Hindi text
+                synth.speak(utterThis1);
+                synth.speak(utterThis2);
+                synth.speak(utterThis3);
+               // synth.speak(utterThis4);
+                synth.speak(utterThis5);
+            } else {
+                console.error('Speech Synthesis API is not supported in this browser.');
+            }
+        })}
+    //on to handle speech recognition and convert voice input into text
+function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.start();
+
+    recognition.onresult = function (event) {
+        let transcript = event.results[0][0].transcript;
+
+        // Replace the word "and" with a comma
+        transcript = transcript.replace(/\band\b/g, ',');
+
+        // Insert the transformed transcript into the text input
+        document.getElementById('condition').value = transcript;
+    };
+
+    recognition.onerror = function (event) {
+        console.error('Speech recognition error detected: ' + event.error);
+    };
+}
+
+// Function to translate text to Hindi using LibreTranslate API
+async function translateToHindi(text) {
+    
+    const res = await fetch("http://localhost:5000/translate", {
+        method: "POST",
+        body: JSON.stringify({
+            q: text,
+            source: "auto",
+            target: "hi",
+            format: "text",
+            alternatives: 3,
+            api_key: "" // If you have an API key, add it here.
+        }),
+        headers: { "Content-Type": "application/json" }
+    });
+
+    const responseData = await res.json();
+    return responseData.translatedText; // Get the translated Hindi text
+}
+    </script>
+</body>
+
+</html>

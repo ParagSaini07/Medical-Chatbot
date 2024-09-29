@@ -1,0 +1,526 @@
+/* Reset styles */
+* {
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  background-color: #fff;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+header.scrolled {
+  background-color: #00bcd4;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00bcd4;
+  transition: color 0.3s ease;
+}
+
+
+header.scrolled .logo span {
+  color: #fff;
+}
+
+
+.search-bar:focus, .mic-search-bar:focus {
+  border-color: #00bcd4;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Adjusting the search icon position */
+/* .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+} */
+
+/* .search-icons svg {
+  width: 20px;
+  height: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+} */
+
+header.scrolled .search-icon svg {
+  color: #fff;
+}
+
+
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+}
+
+nav ul li {
+  margin-left: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+header.scrolled nav ul li a {
+  color: #fff;
+}
+
+nav ul li a:hover {
+  color: #00bcd4;
+}
+
+header.scrolled nav ul li a:hover {
+  color: #f0f0f0;
+}
+#doctbc{
+  position: absolute;
+  width: 100%;
+  height: 112%;
+  z-index: 1;
+}
+/* Hero section styles */
+.hero {
+  display: flex;
+  justify-content: space-between;
+
+  color: #fff;
+  padding: 5rem 10%;
+  background-image: url('WhatsApp\ Image\ 2024-09-25\ at\ 22.12.37_1def2063.jpg');
+  background-position: -50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100vh;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+}
+
+#askchat{
+  background-color: #fff;
+  color: #00bcd4;
+  border: black , 2px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.learn-more {
+  background-color: #fff;
+  color: #00bcd4;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.learn-more:hover {
+  background-color: #f0f0f0;
+}
+
+
+#askchat:hover{
+  background-color: #f0f0f0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; 
+  padding: 30px; 
+  border: 1px solid #888;
+  width: 500px; 
+  max-width: 90%;
+  border-radius: 8px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover, .close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.search-containers input{
+  padding: 5px;
+ 
+}
+
+
+.modal h1{
+  color: #00bcd4;
+}
+.search-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.mic-container {
+  position: relative;
+}
+
+.modal-search-bar, .mic-search-bar {
+  padding: 0.75rem 2.5rem; /* Add padding-right to make space for icons */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #333;
+}
+
+.mic-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #00bcd4;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  background-color: #fff;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+header.scrolled {
+  background-color: #00bcd4;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00bcd4;
+  transition: color 0.3s ease;
+}
+
+header.scrolled .logo span {
+  color: #fff;
+}
+
+.learn-more {
+  background-color: #fff;
+  color: #00bcd4;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.learn-more:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hero section styles */
+.hero {
+  display: flex;
+  color: #fff;
+  padding: 5rem 10%;
+  background-image: url('/static/images/bc.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100vh;
+  align-items: center;
+}
+.hero background-image{
+  z-index: -1;
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; 
+  padding: 30px; 
+  border: 1px solid #888;
+  width: 500px; 
+  max-width: 90%;
+  border-radius: 8px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover, .close-button:focus {
+  color: black;
+  cursor: pointer;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.modal-search-bar, .mic-search-bar {
+  padding: 0.75rem 2.5rem; /* Add padding-right to make space for icons */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+.card2-img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card-btn {
+  display: inline-block;
+  background-color: #00bcd4;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+  background-color: #008c9e;
+}
+.card2 {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.card2:hover {
+  transform: translateY(-10px);
+}
+
+.card2-img {
+  width: 100%;
+  height: auto;
+}
+
+.card2-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card2-title {
+  color: color(black);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card2-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card2-btn {
+  display: inline-block;
+  background-color: #00bcd4;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.card2-btn:hover {
+  background-color: #008c9e;
+}
+
+.mic-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #00bcd4;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

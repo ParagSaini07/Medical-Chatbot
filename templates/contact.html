@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURE CONNECT</title>
+    <link rel="stylesheet" href="/static/CSS/styles.css"> <!-- Ensure the correct path to your CSS file -->
+</head>
+<body>
+    <style>
+       
+        body {
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/images/healthcare1.jpg') no-repeat center center fixed;
+            background-size: 100% , 100%;
+        }
+        
+        .contact-fo rm {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* Assuming the form is within a container with a class .form-container */
+.form-container {
+  padding-left: 70px; /* Adds space from the left */
+  padding-top: 20px;  /* Adds space from the top */
+  max-width: 600px; /* Sets a maximum width for the form */
+  margin-left: auto; /* Centers the form in the available space */
+  margin-right: auto; /* Centers the form in the available space */
+}
+
+
+
+
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 20px; /* Adds space from the left */
+  margin-top: 20px;  /* Adds space from the top */
+  max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/static/images/logo1.jpg" alt="Medic Logo">
+                <span>CURE CONNECT</span>
+            </div>
+            <div class="nav-right">
+                <div class="search-containers">
+                    <input type="text" placeholder="Search..." class="search-bar">
+                    
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li> <!-- Link to About Page -->
+                    <li><a href="/service">Service</a></li> <!-- Link to Service Page -->
+                    <li><a href="/doctor">Doctor</a></li> <!-- Link to Doctor Page -->
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-form">
+            <form>
+                <h1>Contact Us</h1>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Number:</label>
+                    <input type="tel" id="contact" name="contact" placeholder="Your contact number" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Your address">
+                </div>
+                <div class="form-group">
+                    <label for="details">Details:</label>
+                    <textarea id="details" name="details" placeholder="Additional details" rows="4"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
