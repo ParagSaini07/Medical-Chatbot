@@ -23,7 +23,7 @@ A medical chatbot that allows users to input one or more medical conditions and 
 
 1. Clone the repository:
    ```bash
-   git clone  https://github.com/rkyadav3/Medical-Chatbot.git
+   git clone  https://github.com/ParagSaini07/Medical-Chatbot.git
 2. Navigate to the project directory:
     ```bash
     cd medical-chatbot
